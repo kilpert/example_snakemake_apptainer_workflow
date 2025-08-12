@@ -1,7 +1,7 @@
 rule containers_bedtools:
     input:
         yaml="workflow/envs/bedtools.yaml",
-        definition="workflow/envs/bedtools.def",
+        definition="workflow/envs/apptainer.def",
     output:
         "containers/bedtools.sif"
     log:

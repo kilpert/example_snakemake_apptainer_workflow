@@ -10,25 +10,28 @@ From: condaforge/miniforge3:latest
     {{ ENVIRONMENT_YAML }} /opt/env/environment.yaml
 
 %post
-    mkdir -p /opt/home
+    # Exit on error, print commands
+    set -eux 
 
-    set -eux
+    # Create a home directory   
+    mkdir -p /opt/home 
+
+    # List contents of the environment directory for debugging
+    ls -l /opt/env/
+
     # Ensure conda is on PATH
     export PATH=/opt/conda/bin:$PATH
 
     # Configure channels (strict order: conda-forge then bioconda)
-    conda config --system --set channel_priority strict
-    conda config --system --add channels conda-forge
     conda config --system --add channels bioconda
-
-    ls -l /opt/env/
+    conda config --system --add channels conda-forge
+    conda config --system --set channel_priority strict
 
     # Update conda to the latest version
     conda update -n base -c conda-forge conda -y -q
     # Install everything from the YAML *into base*
     conda env update -n base -f /opt/env/environment.yaml
-    ## conda install -y bedtools
-
+    
     # Clean
     conda clean -afy
 
