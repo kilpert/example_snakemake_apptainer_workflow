@@ -8,8 +8,6 @@ rule containers_bedtools:
         "log/containers_bedtools.log"
     benchmark:
         ".benchmark/containers_bedtools.benchmark.tsv"
-    # singularity_args:
-    #     "--cleanenv" ## "--no-home --contain --cleanenv"
     shell:
         "apptainer build "
         "--force "
