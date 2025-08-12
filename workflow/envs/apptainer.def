@@ -11,6 +11,7 @@ From: condaforge/miniforge3:latest
 ## apptainer run containers/bedtools.sif conda info
 ## apptainer run containers/bedtools.sif conda list
 ## apptainer run containers/bedtools.sif bedtools --version
+## apptainer run -B "$PWD":/work --pwd /work containers/bedtools.sif bedtools intersect -a test/a.bed -b test/b.bed | tee c.bed
 
 
 %labels
