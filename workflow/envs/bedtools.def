@@ -33,18 +33,16 @@ From: condaforge/miniforge3:latest
     conda clean -afy
 
 %environment
-    # Make conda tools available at runtime
+    export HOME=/opt/home
     export PATH=/opt/conda/bin:$PATH
-    # Make isolation default
     export CONDARC=/opt/conda/.condarc
     export CONDA_PKGS_DIRS=/opt/conda/pkgs
     export CONDA_ENVS_PATH=/opt/conda/envs
     unset CONDA_PREFIX CONDA_DEFAULT_ENV CONDA_SHLVL
 
 %test
-    # Make conda tools available at runtime
+    export HOME=/opt/home
     export PATH=/opt/conda/bin:$PATH
-    # Make isolation default
     export CONDARC=/opt/conda/.condarc
     export CONDA_PKGS_DIRS=/opt/conda/pkgs
     export CONDA_ENVS_PATH=/opt/conda/envs
@@ -53,11 +51,11 @@ From: condaforge/miniforge3:latest
     ## List installed packages
     conda list
 
-# %runscript
-#     # If you `apptainer run miniforge3.apptainer.sif` with no args, show conda version.
-#     # Otherwise, pass args to conda.
-#     if [ $# -eq 0 ]; then
-#         exec conda info
-#     else
-#         exec "$@"
-#     fi
+%runscript
+    exec env -i \
+      HOME=/opt/home \
+      PATH=/opt/conda/bin:/usr/bin:/bin \
+      CONDARC=/opt/conda/.condarc \
+      CONDA_PKGS_DIRS=/opt/conda/pkgs \
+      CONDA_ENVS_PATH=/opt/conda/envs \
+      "$@"
