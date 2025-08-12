@@ -2,10 +2,12 @@ bootstrap: docker
 From: condaforge/miniforge3:latest
 
 
-## Build sif from this definition file:
+## Usage:
+
+## Build .sif from this definition file:
 ## apptainer build --force --build-arg 'ENVIRONMENT_YAML=workflow/envs/bedtools.yaml' containers/bedtools.sif workflow/envs/apptainer.def
 
-## Usage:
+## Run the container:
 ## apptainer run containers/bedtools.sif conda info
 ## apptainer run containers/bedtools.sif conda list
 ## apptainer run containers/bedtools.sif bedtools --version
