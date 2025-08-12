@@ -18,7 +18,7 @@ From: condaforge/miniforge3:latest
     Author "you"
     Description "miniforge3 + bedtools"
 
-# Copy the environment file into the build context
+## Copy the environment file into the build context
 %files
     {{ ENVIRONMENT_YAML }} /opt/env/environment.yaml
 
