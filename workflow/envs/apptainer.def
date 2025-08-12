@@ -23,29 +23,29 @@ From: condaforge/miniforge3:latest
     {{ ENVIRONMENT_YAML }} /opt/env/environment.yaml
 
 %post
-    # -e: exit on error, -u: treat unset variables as an error, -x: print commands before executing them
+    ## -e: exit on error, -u: treat unset variables as an error, -x: print commands before executing them
     set -eux 
 
-    # Create a home directory   
+    ## Create a home directory   
     mkdir -p /opt/home 
 
-    # List contents of the environment directory for debugging
+    ## List contents of the environment directory for debugging
     ls -l /opt/env/
 
-    # Ensure conda is on PATH
+    ## Ensure conda is on PATH
     export PATH=/opt/conda/bin:$PATH
 
-    # Configure channels (strict order: conda-forge then bioconda)
+    ## Configure channels (strict order: conda-forge then bioconda)
     conda config --system --add channels bioconda
     conda config --system --add channels conda-forge
     conda config --system --set channel_priority strict
 
-    # Update conda to the latest version
+    ## Update conda to the latest version
     conda update -n base -c conda-forge conda -y -q
-    # Install everything from the YAML *into base*
+    ## Install everything from the YAML *into base*
     conda env update -n base -f /opt/env/environment.yaml
     
-    # Clean
+    ## Clean
     conda clean -afy
 
 %environment
@@ -57,6 +57,7 @@ From: condaforge/miniforge3:latest
     unset CONDA_PREFIX CONDA_DEFAULT_ENV CONDA_SHLVL
 
 %test
+    ## %environment is only active during runtime, but NOT during test!!!
     export HOME=/opt/home
     export PATH=/opt/conda/bin:$PATH
     export CONDARC=/opt/conda/.condarc
