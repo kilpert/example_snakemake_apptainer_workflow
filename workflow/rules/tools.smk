@@ -2,7 +2,7 @@ rule tools_bedtools:
     input:
         a="test/a.bed",
         b="test/b.bed",
-        sif="containers/bedtools.sif",
+        sif=rules.containers_bedtools.output,
     output:
         "results/bedtools/c.bed"
     container: 
