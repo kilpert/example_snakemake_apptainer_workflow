@@ -9,7 +9,7 @@ From: condaforge/miniforge3:latest
 
 
 %labels
-    Author "Fabian Kilpert"
+    Author "you"
     Description "miniforge3 + bedtools"
 
 # Copy the environment file into the build context
@@ -17,7 +17,7 @@ From: condaforge/miniforge3:latest
     {{ ENVIRONMENT_YAML }} /opt/env/environment.yaml
 
 %post
-    # Exit on error, print commands
+    # -e: exit on error, -u: treat unset variables as an error, -x: print commands before executing them
     set -eux 
 
     # Create a home directory   
