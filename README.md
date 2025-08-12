@@ -4,6 +4,8 @@ https://github.com/kilpert/example_snakemake_apptainer_workflow
 
 ## Run
 
+Apptainer container (.sif) is built on the fly.
+
 ```
 bash run.sh
 ```
