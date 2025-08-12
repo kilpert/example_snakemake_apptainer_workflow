@@ -12,7 +12,7 @@ bash run.sh
 
 ## Apptainer (manually)
 
-### Build .sif from this definition file:
+### Build container (.sif) from definition file (.def):
 ```
 apptainer build --force --build-arg 'ENVIRONMENT_YAML=workflow/envs/bedtools.yaml' containers/bedtools.sif workflow/envs/apptainer.def
 ```
