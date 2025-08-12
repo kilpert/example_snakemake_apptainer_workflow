@@ -10,7 +10,7 @@ Apptainer container (.sif) is built on the fly.
 bash run.sh
 ```
 
-## Apptainer
+## Apptainer (manually)
 
 ### Build .sif from this definition file:
 ```
