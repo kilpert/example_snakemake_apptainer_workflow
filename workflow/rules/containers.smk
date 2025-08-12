@@ -39,7 +39,7 @@
 rule containers:
     input:
         yaml="workflow/envs/{env}.yaml",
-        definition="workflow/envs/apptainer.def",
+        definition="workflow/envs/apptainer.miniforge3.def",
     output:
         "containers/{env}.sif"
     log:
