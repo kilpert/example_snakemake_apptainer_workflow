@@ -1,8 +1,15 @@
 bootstrap: docker
 From: condaforge/miniforge3:latest
 
+
+## Usage:
+## apptainer run containers/bedtools.sif conda info
+## apptainer run containers/bedtools.sif conda list
+## apptainer run containers/bedtools.sif bedtools --version
+
+
 %labels
-    Author you
+    Author "Fabian Kilpert"
     Description "miniforge3 + bedtools"
 
 # Copy the environment file into the build context
