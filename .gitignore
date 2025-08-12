@@ -1,0 +1,6 @@
+results*/
+*.sif
+containers/
+log/
+.snakemake/
+.benchmark/

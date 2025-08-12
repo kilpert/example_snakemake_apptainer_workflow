@@ -1,0 +1,58 @@
+import glob
+import json
+import os
+import pandas as pd
+import re
+import yaml
+
+
+## config.yaml #####################################################################################
+try:
+    configfile: "config/config.yaml"
+except:
+    pass
+
+
+## resources #######################################################################################
+
+try:
+    workflow.global_resources["io"]
+except:
+    workflow.global_resources["io"] = 8
+
+
+## config ##########################################################################################
+
+try:
+    results = config["results"]
+except:
+    results = "results"
+
+
+try:
+    config["verbose"]
+except:
+    config["verbose"] = False
+verbose = config["verbose"]
+
+
+if verbose:
+    print("{:#^100}".format(" Config "))
+    print(json.dumps(config, sort_keys=True, indent=4))
+
+
+## include #########################################################################################
+
+include: "rules/containers.smk"
+
+
+## rule all ########################################################################################
+if verbose:
+    print("{:#^100}".format(" Workflow "))
+
+
+rule all:
+    input:
+        ## containers ##############################################################################
+        "containers/bedtools.sif",
+
