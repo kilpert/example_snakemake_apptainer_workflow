@@ -36,6 +36,14 @@ except:
 verbose = config["verbose"]
 
 
+config["envs"] = {}
+try:
+    for path in glob.glob("workflow/envs/*.yml") + glob.glob("workflow/envs/*.yaml"):
+        config["envs"][os.path.splitext(os.path.basename(path))[0]] = path
+except:
+    pass
+
+
 if verbose:
     print("{:#^100}".format(" Config "))
     print(json.dumps(config, sort_keys=True, indent=4))
@@ -55,8 +63,12 @@ if verbose:
 rule all:
     input:
         ## containers ##############################################################################
-        "containers/bedtools.sif",
-        "containers/samtools.sif",
+        # "containers/bedtools.sif",
+        # "containers/samtools.sif",
+        expand(
+            "containers/{env}.sif",
+            env=config["envs"].keys()
+        ),
 
         ## tools ###################################################################################
         "results/bedtools/c.bed",
