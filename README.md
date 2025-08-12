@@ -1,0 +1,28 @@
+# example_snakemake_apptainer_workflow
+
+https://github.com/kilpert/example_snakemake_apptainer_workflow
+
+## Run
+
+```
+bash run.sh
+```
+
+## Apptainer
+
+### Build .sif from this definition file:
+```
+apptainer build --force --build-arg 'ENVIRONMENT_YAML=workflow/envs/bedtools.yaml' containers/bedtools.sif workflow/envs/apptainer.def
+```
+
+### Run the container:
+```
+apptainer run containers/bedtools.sif conda info
+apptainer run containers/bedtools.sif conda list
+apptainer run containers/bedtools.sif bedtools --version
+```
+
+### Run the container (with writable current directory)
+```
+apptainer run -B "$PWD":/work --pwd /work containers/bedtools.sif bedtools intersect -a test/a.bed -b test/b.bed | tee c.bed
+```
