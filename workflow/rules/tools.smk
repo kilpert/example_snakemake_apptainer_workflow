@@ -12,7 +12,7 @@ rule tools_bedtools:
     benchmark:
         "{results}/.benchmark/tools_bedtools.benchmark.tsv"
     shell:
-        "bash workflow/scripts/system_info.sh "
+        "bash workflow/scripts/env_info.sh "
         ">{log} 2>&1; "
         "bedtools intersect "
         "-a {input.a} "
