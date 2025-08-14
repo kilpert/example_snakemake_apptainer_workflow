@@ -7,3 +7,4 @@ echo "pwd: $(pwd)"
 echo -e "locale:\n$(locale)"
 echo -e "conda info:\n$(conda info)"
 echo -e "conda list:\n$(conda list)"
+echo
