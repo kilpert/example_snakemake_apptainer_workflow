@@ -71,5 +71,7 @@ rule all:
         ),
 
         ## tools ###################################################################################
-        "results/bedtools/c.bed",
+        expand("{results}/bedtools/c.bed",
+            results=results,
+        ),
 

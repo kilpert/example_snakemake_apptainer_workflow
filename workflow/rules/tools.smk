@@ -4,13 +4,13 @@ rule tools_bedtools:
         b="test/b.bed",
         sif="containers/bedtools.sif",
     output:
-        "results/bedtools/c.bed"
+        "{results}/bedtools/c.bed"
     container: 
         "containers/bedtools.sif"
     log:
-        "log/tools_bedtools.log"
+        "{results}/log/tools_bedtools.log"
     benchmark:
-        ".benchmark/tools_bedtools.benchmark.tsv"
+        "{results}/.benchmark/tools_bedtools.benchmark.tsv"
     shell:
         ## "apptainer run "
         ## "-B $PWD:/work --pwd /work "
