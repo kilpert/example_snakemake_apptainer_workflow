@@ -2,7 +2,7 @@ rule tools_bedtools:
     input:
         a="test/a.bed",
         b="test/b.bed",
-        sif="containers/bedtools.sif",
+        sif="containers/bedtools.sif" if workflow.deployment_settings.apptainer_prefix else [],
     output:
         "{results}/bedtools/c.bed"
     container: 
