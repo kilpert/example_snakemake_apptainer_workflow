@@ -49,6 +49,15 @@ if verbose:
     print(json.dumps(config, sort_keys=True, indent=4))
 
 
+# ## Deployment settings #############################################################################
+# if verbose:
+#     print("{:#^100}".format(" Deployment Settings "))
+#     ##print(workflow)
+#     print(workflow.deployment_settings)
+#     ##print(workflow.deployment_settings.apptainer_prefix)
+#     ##print(workflow.deployment_settings.apptainer_args)
+
+
 ## include #########################################################################################
 
 include: "rules/containers.smk"
@@ -56,6 +65,7 @@ include: "rules/tools.smk"
 
 
 ## rule all ########################################################################################
+
 if verbose:
     print("{:#^100}".format(" Workflow "))
 
