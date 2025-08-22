@@ -85,3 +85,8 @@ rule all:
             results=results,
         ),
 
+        ## python ##################################################################################
+        expand("{results}/bedtools/c.tsv",
+            results=results,
+        ),
+
