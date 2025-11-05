@@ -1,0 +1,14 @@
+software-deployment-method:
+  - conda
+# ensure that we wait for the NFS
+latency-wait: 120
+# enforce using local work directories instead of directly running in NFS
+default-storage-provider: none # disable any sharing via the filesystem; fs
+local-storage-prefix: /local/work/$USER/snakemake-scratch
+remote-job-local-storage-prefix: /local/work/$USER/slurm-job-\$SLURM_JOB_ID/snakemake-scratch
+
+use-conda: true
+rerun-incomplete: true
+printshellcmds: true
+cache: true
+## executor: slurm # --executor slurm
