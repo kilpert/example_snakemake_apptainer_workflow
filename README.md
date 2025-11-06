@@ -4,6 +4,8 @@ https://github.com/kilpert/example_snakemake_apptainer_workflow
 
 ## First run
 
+Tested with apptainer-1.4.2
+
 ```
 git clone git@github.com:kilpert/example_snakemake_apptainer_workflow.git
 cd example_snakemake_apptainer_workflow/
